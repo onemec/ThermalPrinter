@@ -1,0 +1,80 @@
+/* CSS Credit to: http://printer.exciting.io/stylesheets/print.css */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: 'Droid Serif', serif;
+}
+
+body .controls {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    body.preview {
+        background-color: #ccc;
+    }
+
+    body.preview .controls {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 40px;
+    }
+
+    body.preview .paper {
+        background-color: white;
+        width: 440px;
+        padding-top: 25px;
+        padding-bottom: 50px;
+        margin: 30px auto;
+        box-shadow: 10px 10px 5px rgba(40, 40, 40, 0.5);
+    }
+
+    body.preview .content {
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+body .content {
+    -webkit-font-smoothing: none;
+    width: 384px;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: white;
+}
+
+/*# sourceMappingURL=print.css.map */
+
+header {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 75px;
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: 72px;
+    margin-bottom: 10px;
+}
+
+
+p {
+    margin-top: 0;
+    margin-bottom: 0px;
+    line-height: 1.4;
+}
+
+.head {
+    text-align: center;
+    position: relative;
+}
+
+.subhead {
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    padding: 7px 0 7px 0;
+}
+
+.forecast {
+    padding: 11px 0 11px 0;
+}

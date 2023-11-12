@@ -1,0 +1,25 @@
+[project]
+name = "ThermanPrinter"
+version = "0.0.1"
+description = "Enables printing simple web content (news, puzzles, etc.) to any ESC/POS thermal printer."
+authors = [
+    {name = "Oliver Nemec", email = "28827159+onemec@users.noreply.github.com"},
+]
+dependencies = [
+    "sudokum>=0.0.1",
+    "playwright>=1.39.0",
+    "pydantic>=2.4.2",
+    "escpos>=2.0.0",
+    "requests>=2.31.0",
+    "dominate>=2.8.0",
+    "typer[all]>=0.9.0",
+]
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "GPL-3.0-only"}
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.11.0",
+    "commitizen>=3.12.0",
+]
