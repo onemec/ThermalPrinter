@@ -1,4 +1,12 @@
 /* CSS Credit to: http://printer.exciting.io/stylesheets/print.css */
+
+/* Font Awesome (webfont for icons) */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+/* Bootstrap 5.3.0 */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -43,8 +51,6 @@ body .content {
     margin: 0 auto;
     background-color: white;
 }
-
-/*# sourceMappingURL=print.css.map */
 
 header {
     font-family: 'Playfair Display', serif;

@@ -1,8 +1,6 @@
 from typing import Any
 
 from escpos.printer import Usb
-import os
-from datetime import datetime
 
 from playwright.sync_api import sync_playwright
 import dominate
@@ -24,76 +22,20 @@ def run(_playwright: sync_playwright) -> None:
     browser.close()
 
 
-def testaroni():
-    thingy = div(cls="row mb-3 text-center forecast")
-    with thingy:
-        with div(cls="col"):
-            br()
-            i(cls="fa-solid fa-cloud-moon fa-4x")
-        with div(cls="col"):
-            with div(cls="row"):
-                text("<h5>70.7&degF</h5>", escape=False)
-            with div(cls="row"):
-                with p():
-                    i(cls="fa-solid fa-wind fa-sm")
-                    text(" 3.7 mph ")
-                    br()
-                    i(cls="fa-solid fa-arrow-up-long")
-                    text(" 81.6&degF ", escape=False)
-                    i(cls="fa-solid fa-arrow-down-long")
-                    text(" 65.9&degF ", escape=False)
-                    br()
-                    i(cls="fa-regular fa-sun")
-                    text(" 05:27 ")
-                    i(cls="fa-solid fa-arrow-right-long")
-                    text(" 20:14 ")
-    return thingy
-
-
 def create_html_file(
-    temp_html_file: str = None,
-    location_str: str = None,
-    location_coordinates: tuple[float, float] = None,
     contents: list[div] | None = None,
 ) -> None:
-    if not temp_html_file:
-        temp_html_file = DEFAULT_HTML_FILE
-    if not location_str:
-        location_str = "Boston, MA"
-    if not location_coordinates:
-        location_coordinates = (42.34, -71.09)
-
     doc = dominate.document()
     with doc.head:
-        # Font Awesome (webfont for icons)
-        link(
-            rel="stylesheet",
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
-            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==",
-            crossorigin="anonymous",
-            referrerpolicy="no-referrer",
-        )
         # Paper CSS (for fixed-width printer roll width)
-        link(rel="stylesheet", href="style.css")
-        # Bootstrap 5.3.0
-        link(
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
-            rel="stylesheet",
-            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM",
-            crossorigin="anonymous",
-        )
-        link(
-            rel="stylesheet",
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap",
-        )
+        link(rel="stylesheet", href="src/style.css")
     with doc.body:
         doc.body["class"] = "preview"
         with div(cls="paper"):
             with div(cls="content"):
-                testaroni()
                 for entry in contents:
                     div(entry)
-    with open(temp_html_file, "w") as f:
+    with open(DEFAULT_HTML_FILE, "w") as f:
         f.write(doc.render())
 
 

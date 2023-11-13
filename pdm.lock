@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform"]
 lock_version = "4.4"
-content_hash = "sha256:2400bc3a844d8b14b370caf3029b45fa7923cfd4d1d1ef375f8133ae5c8b8984"
+content_hash = "sha256:dca25827f1bfb077c9b391e4b8756838cb4179da7e6178e3650f40e544a71ab6"
 
 [[package]]
 name = "annotated-types"
@@ -626,13 +626,13 @@ files = [
 ]
 
 [[package]]
-name = "sudokum"
-version = "0.0.1"
-requires_python = ">=3.6"
-summary = "python sudoku generator and solver"
+name = "sudokugame"
+version = "1.0.0"
+requires_python = ">=3.7"
+summary = "A Python package to generate sudoku"
 files = [
-    {file = "sudokum-0.0.1-py3-none-any.whl", hash = "sha256:82c6ec4db986521585084a69a4b1ee6fb601a17fa11eb45aeb5370e9dcb49dc4"},
-    {file = "sudokum-0.0.1.tar.gz", hash = "sha256:7f0dddf63a1f96f480fb5b07dd4573fb9d44a3fab3f1385a1f1e5a3b84df9530"},
+    {file = "sudokugame-1.0.0-py3-none-any.whl", hash = "sha256:d8b17cd92f69128398289b49a2322694c4ff247474e2a0a097249d875b989898"},
+    {file = "sudokugame-1.0.0.tar.gz", hash = "sha256:0308ac0e7dc8c99f2be29a7aa0e73d77bde742d66a12fcf58b91bf703f7dbc89"},
 ]
 
 [[package]]

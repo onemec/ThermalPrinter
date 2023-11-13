@@ -1,6 +1,8 @@
 import requests
 from datetime import datetime
 from pydantic import BaseModel, ValidationError, conint
+from dominate.tags import *
+from dominate.util import text
 
 
 class DailyWeather(BaseModel):
@@ -306,3 +308,29 @@ def get_weather():
 
 
 get_weather()
+
+
+def generate() -> div:
+    formed_div = div(cls="row mb-3 text-center forecast")
+    with formed_div:
+        with div(cls="col"):
+            br()
+            i(cls="fa-solid fa-cloud-moon fa-4x")
+        with div(cls="col"):
+            with div(cls="row"):
+                text("<h5>70.7&degF</h5>", escape=False)
+            with div(cls="row"):
+                with p():
+                    i(cls="fa-solid fa-wind fa-sm")
+                    text(" 3.7 mph ")
+                    br()
+                    i(cls="fa-solid fa-arrow-up-long")
+                    text(" 81.6&degF ", escape=False)
+                    i(cls="fa-solid fa-arrow-down-long")
+                    text(" 65.9&degF ", escape=False)
+                    br()
+                    i(cls="fa-regular fa-sun")
+                    text(" 05:27 ")
+                    i(cls="fa-solid fa-arrow-right-long")
+                    text(" 20:14 ")
+        return formed_div
