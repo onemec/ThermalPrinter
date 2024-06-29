@@ -5,7 +5,6 @@ from escpos.printer import Usb
 from playwright.sync_api import sync_playwright
 import dominate
 from dominate.tags import *
-from dominate.util import text
 from pathlib import Path
 
 # Inspired largely by: https://codepen.io/silkine/pen/QWBxVX
@@ -29,6 +28,11 @@ def create_html_file(
     with doc.head:
         # Paper CSS (for fixed-width printer roll width)
         link(rel="stylesheet", href="src/style.css")
+        # A prettier font
+        link(rel='preconnect', href="https://fonts.googleapis.com")
+        link(rel='preconnect', href="https://fonts.gstatic.com", crossorigin="anonymous")
+        link(rel='stylesheet', href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,"
+                                    "500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap")
     with doc.body:
         doc.body["class"] = "preview"
         with div(cls="paper"):

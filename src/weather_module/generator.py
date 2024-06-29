@@ -62,175 +62,240 @@ def wmo_to_fa(wmo_code: int) -> str:
         10: "fa-cloud-meatball",  # Towering cumulus or cumulus fractus in an otherwise clear sky
         11: "fa-bolt",  # Precipitation within sight, not reaching the ground or the surface of the sea
         12: "fa-bolt",
-        # Precipitation within sight, reaching the ground or the surface of the sea, but distant, i.e. not over the station
+        # Precipitation within sight, reaching the ground or the surface of the sea, but distant, i.e. not over the
+        # station
         13: "fa-bolt",
-        # Precipitation within sight, reaching the ground or the surface of the sea, near to the station, but not at the station
+        # Precipitation within sight, reaching the ground or the surface of the sea, near to the station, but not at
+        # the station
         14: "fa-bolt",
-        # Precipitation within sight, reaching the ground or the surface of the sea at the station, but not directly at the station
+        # Precipitation within sight, reaching the ground or the surface of the sea at the station, but not directly
+        # at the station
         15: "fa-bolt",
-        # Precipitation within sight, reaching the ground or the surface of the sea at the station, and being blown by the wind
+        # Precipitation within sight, reaching the ground or the surface of the sea at the station, and being blown
+        # by the wind
         16: "fa-snowflake",  # Precipitation within sight, but not at the station
         17: "fa-snowflake",  # Ice pellets or snow grains within sight, but not at the station
         18: "fa-cloud-rain",
-        # Precipitation within sight, reaching the ground or the surface of the sea at the station, but not directly at the station
+        # Precipitation within sight, reaching the ground or the surface of the sea at the station, but not directly
+        # at the station
         19: "fa-cloud-rain",  # Precipitation within sight, and being blown by the wind
         20: "fa-fog",
-        # Fog or ice fog at the station, the fog or ice fog being the same as or thinner than the smallest subdivision of the time period during which it is reported
+        # Fog or ice fog at the station, the fog or ice fog being the same as or thinner than the smallest
+        # subdivision of the time period during which it is reported
         21: "fa-fog",
-        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time period during which it is reported, but not dense enough to meet the criteria for the subsequent code
+        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time
+        # period during which it is reported, but not dense enough to meet the criteria for the subsequent code
         22: "fa-fog",
-        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time period during which it is reported and becoming denser or the horizontal visibility decreasing during the past hour
+        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time
+        # period during which it is reported and becoming denser or the horizontal visibility decreasing during the
+        # past hour
         23: "fa-fog",
-        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time period during which it is reported and becoming less dense or the horizontal visibility increasing during the past hour
+        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time
+        # period during which it is reported and becoming less dense or the horizontal visibility increasing during
+        # the past hour
         24: "fa-wind",
-        # Fog or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice fog extending to a level above that of the observer
+        # Fog or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice fog
+        # extending to a level above that of the observer
         25: "fa-wind",
-        # Fog or ice fog, in the form of a layer or patch, not at the station, whether on land or sea, the fog or ice fog extending to a level above that of the observer
+        # Fog or ice fog, in the form of a layer or patch, not at the station, whether on land or sea, the fog or ice
+        # fog extending to a level above that of the observer
         26: "fa-smog",
-        # Fog or ice fog at the station, the fog or ice fog being the same as or thinner than the smallest subdivision of the time period during which it is reported
+        # Fog or ice fog at the station, the fog or ice fog being the same as or thinner than the smallest
+        # subdivision of the time period during which it is reported
         27: "fa-smog",
-        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time period during which it is reported, but not dense enough to meet the criteria for the subsequent code
+        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time
+        # period during which it is reported, but not dense enough to meet the criteria for the subsequent code
         28: "fa-smog",
-        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time period during which it is reported and becoming denser or the horizontal visibility decreasing during the past hour
+        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time
+        # period during which it is reported and becoming denser or the horizontal visibility decreasing during the
+        # past hour
         29: "fa-smog",
-        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time period during which it is reported and becoming less dense or the horizontal visibility increasing during the past hour
+        # Fog or ice fog at the station, the fog or ice fog being denser than the smallest subdivision of the time
+        # period during which it is reported and becoming less dense or the horizontal visibility increasing during
+        # the past hour
         30: "fa-smog",
-        # Fog or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice fog extending to a level above that of the observer
+        # Fog or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice fog
+        # extending to a level above that of the observer
         31: "fa-smog",
-        # Fog or ice fog, in the form of a layer or patch, not at the station, whether on land or sea, the fog or ice fog extending to a level above that of the observer
+        # Fog or ice fog, in the form of a layer or patch, not at the station, whether on land or sea, the fog or ice
+        # fog extending to a level above that of the observer
         32: "fa-clouds",  # Widespread dust in suspension in the air at the station, whether over land or sea
         33: "fa-dust",  # Widespread sand in suspension in the air at the station, whether over land or sea
         34: "fa-wind",  # Widespread dust or sand in suspension in the air at the station, whether over land or sea
         35: "fa-dust",
-        # Widespread dust raised by the wind at or near the station at the time of observation, but no duststorm or sandstorm within sight at that time
+        # Widespread dust raised by the wind at or near the station at the time of observation, but no duststorm or
+        # sandstorm within sight at that time
         36: "fa-wind",
-        # Widespread sand raised by the wind at or near the station at the time of observation, but no duststorm or sandstorm within sight at that time
+        # Widespread sand raised by the wind at or near the station at the time of observation, but no duststorm or
+        # sandstorm within sight at that time
         37: "fa-smog",
-        # Widespread dust or sand raised by the wind at or near the station at the time of observation, but no duststorm or sandstorm within sight at that time
+        # Widespread dust or sand raised by the wind at or near the station at the time of observation,
+        # but no duststorm or sandstorm within sight at that time
         38: "fa-cloud-sun",  # Widespread dust in suspension in the air at the station, whether over land or sea
         39: "fa-dust",  # Widespread sand in suspension in the air at the station, whether over land or sea
         40: "fa-wind",  # Widespread dust or sand in suspension in the air at the station, whether over land or sea
         41: "fa-dust",
-        # Widespread dust raised by the wind at or near the station at the time of observation, but no duststorm or sandstorm within sight at that time
+        # Widespread dust raised by the wind at or near the station at the time of observation, but no duststorm or
+        # sandstorm within sight at that time
         42: "fa-wind",
-        # Widespread sand raised by the wind at or near the station at the time of observation, but no duststorm or sandstorm within sight at that time
+        # Widespread sand raised by the wind at or near the station at the time of observation, but no duststorm or
+        # sandstorm within sight at that time
         43: "fa-smog",
-        # Widespread dust or sand raised by the wind at or near the station at the time of observation, but no duststorm or sandstorm within sight at that time
+        # Widespread dust or sand raised by the wind at or near the station at the time of observation,
+        # but no duststorm or sandstorm within sight at that time
         44: "fa-cloud",  # Fogs or ice fog at the station, the fog or ice fog ending during the period of observation
         45: "fa-clouds",
-        # Fogs or ice fog at the station, the fog or ice fog, which was the same as or thinner than the smallest subdivision of the time period during which it is reported, ending during the period of observation
+        # Fogs or ice fog at the station, the fog or ice fog, which was the same as or thinner than the smallest
+        # subdivision of the time period during which it is reported, ending during the period of observation
         46: "fa-smog",
-        # Fogs or ice fog at the station, the fog or ice fog, which was denser than the smallest subdivision of the time period during which it is reported, ending during the period of observation
+        # Fogs or ice fog at the station, the fog or ice fog, which was denser than the smallest subdivision of the
+        # time period during which it is reported, ending during the period of observation
         47: "fa-wind",
-        # Fogs or ice fog at the station, the fog or ice fog, which was denser than the smallest subdivision of the time period during which it is reported and becoming less dense or the horizontal visibility increasing during the past hour, ending during the period of observation
+        # Fogs or ice fog at the station, the fog or ice fog, which was denser than the smallest subdivision of the
+        # time period during which it is reported and becoming less dense or the horizontal visibility increasing
+        # during the past hour, ending during the period of observation
         48: "fa-wind",
-        # Fogs or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice fog ending during the period of observation
+        # Fogs or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice
+        # fog ending during the period of observation
         49: "fa-smog",
-        # Fogs or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice fog, which was denser than the smallest subdivision of the time period during which it is reported, ending during the period of observation
+        # Fogs or ice fog, in the form of a layer or patch, at the station, whether on land or sea, the fog or ice
+        # fog, which was denser than the smallest subdivision of the time period during which it is reported,
+        # ending during the period of observation
         50: "fa-sun",
-        # Drizzle at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Drizzle at the station during the preceding hour or at the time of observation, but not at the time of
+        # observation
         51: "fa-cloud-showers",  # Drizzle at the station, which did not start or stop during the preceding hour
         52: "fa-cloud-showers-heavy",  # Drizzle at the station, which started or stopped during the preceding hour
         53: "fa-cloud-rain",
-        # Rain at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Rain at the station during the preceding hour or at the time of observation, but not at the time of
+        # observation
         54: "fa-cloud-rain",  # Rain at the station, which did not start or stop during the preceding hour
         55: "fa-cloud-rain",  # Rain at the station, which started or stopped during the preceding hour
         56: "fa-cloud-showers-heavy",
-        # Precipitation consisting of rain alone or in combination with snow pellets, snow grains, or ice pellets at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Precipitation consisting of rain alone or in combination with snow pellets, snow grains, or ice pellets at
+        # the station during the preceding hour or at the time of observation, but not at the time of observation
         57: "fa-cloud-showers-heavy",
-        # Precipitation consisting of rain alone or in combination with snow pellets, snow grains, or ice pellets at the station, which did not start or stop during the preceding hour
+        # Precipitation consisting of rain alone or in combination with snow pellets, snow grains, or ice pellets at
+        # the station, which did not start or stop during the preceding hour
         58: "fa-cloud-showers-heavy",
-        # Precipitation consisting of rain alone or in combination with snow pellets, snow grains, or ice pellets at the station, which started or stopped during the preceding hour
+        # Precipitation consisting of rain alone or in combination with snow pellets, snow grains, or ice pellets at
+        # the station, which started or stopped during the preceding hour
         59: "fa-cloud-snow",
-        # Precipitation consisting solely of snow, or of rain and snow, at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Precipitation consisting solely of snow, or of rain and snow, at the station during the preceding hour or
+        # at the time of observation, but not at the time of observation
         60: "fa-cloud-snow",
-        # Precipitation consisting solely of snow, or of rain and snow, at the station, which did not start or stop during the preceding hour
+        # Precipitation consisting solely of snow, or of rain and snow, at the station, which did not start or stop
+        # during the preceding hour
         61: "fa-cloud-snow",
-        # Precipitation consisting solely of snow, or of rain and snow, at the station, which started or stopped during the preceding hour
+        # Precipitation consisting solely of snow, or of rain and snow, at the station, which started or stopped
+        # during the preceding hour
         62: "fa-cloud-snow",
-        # Intermittent slight snow, with or without rain, at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Intermittent slight snow, with or without rain, at the station during the preceding hour or at the time of
+        # observation, but not at the time of observation
         63: "fa-cloud-snow",
-        # Intermittent slight snow, with or without rain, at the station, which did not start or stop during the preceding hour
+        # Intermittent slight snow, with or without rain, at the station, which did not start or stop during the
+        # preceding hour
         64: "fa-cloud-snow",
-        # Intermittent slight snow, with or without rain, at the station, which started or stopped during the preceding hour
+        # Intermittent slight snow, with or without rain, at the station, which started or stopped during the
+        # preceding hour
         65: "fa-cloud-snow",
-        # Continuous slight snowfall at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Continuous slight snowfall at the station during the preceding hour or at the time of observation,
+        # but not at the time of observation
         66: "fa-cloud-snow",
         # Continuous slight snowfall at the station, which did not start or stop during the preceding hour
         67: "fa-cloud-snow",
         # Continuous slight snowfall at the station, which started or stopped during the preceding hour
         68: "fa-cloud-snow",
-        # Intermittent moderate snow, with or without rain, at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Intermittent moderate snow, with or without rain, at the station during the preceding hour or at the time
+        # of observation, but not at the time of observation
         69: "fa-cloud-snow",
-        # Intermittent moderate snow, with or without rain, at the station, which did not start or stop during the preceding hour
+        # Intermittent moderate snow, with or without rain, at the station, which did not start or stop during the
+        # preceding hour
         70: "fa-cloud-snow",
-        # Intermittent moderate snow, with or without rain, at the station, which started or stopped during the preceding hour
+        # Intermittent moderate snow, with or without rain, at the station, which started or stopped during the
+        # preceding hour
         71: "fa-cloud-snow",
-        # Continuous moderate snowfall at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Continuous moderate snowfall at the station during the preceding hour or at the time of observation,
+        # but not at the time of observation
         72: "fa-cloud-snow",
         # Continuous moderate snowfall at the station, which did not start or stop during the preceding hour
         73: "fa-cloud-snow",
         # Continuous moderate snowfall at the station, which started or stopped during the preceding hour
         74: "fa-cloud-snow",
-        # Intermittent heavy snow, with or without rain, at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Intermittent heavy snow, with or without rain, at the station during the preceding hour or at the time of
+        # observation, but not at the time of observation
         75: "fa-cloud-snow",
-        # Intermittent heavy snow, with or without rain, at the station, which did not start or stop during the preceding hour
+        # Intermittent heavy snow, with or without rain, at the station, which did not start or stop during the
+        # preceding hour
         76: "fa-cloud-snow",
-        # Intermittent heavy snow, with or without rain, at the station, which started or stopped during the preceding hour
+        # Intermittent heavy snow, with or without rain, at the station, which started or stopped during the
+        # preceding hour
         77: "fa-cloud-snow",
-        # Continuous heavy snowfall at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Continuous heavy snowfall at the station during the preceding hour or at the time of observation,
+        # but not at the time of observation
         78: "fa-cloud-snow",
         # Continuous heavy snowfall at the station, which did not start or stop during the preceding hour
         79: "fa-cloud-snow",
         # Continuous heavy snowfall at the station, which started or stopped during the preceding hour
         80: "fa-cloud-showers",
-        # Drizzle or rain and snow at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Drizzle or rain and snow at the station during the preceding hour or at the time of observation, but not at
+        # the time of observation
         81: "fa-cloud-showers",
         # Drizzle or rain and snow at the station, which did not start or stop during the preceding hour
         82: "fa-cloud-showers",
         # Drizzle or rain and snow at the station, which started or stopped during the preceding hour
         83: "fa-cloud-showers-heavy",
-        # Rain and snow at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Rain and snow at the station during the preceding hour or at the time of observation, but not at the time
+        # of observation
         84: "fa-cloud-showers-heavy",
         # Rain and snow at the station, which did not start or stop during the preceding hour
         85: "fa-cloud-showers-heavy",
         # Rain and snow at the station, which started or stopped during the preceding hour
         86: "fa-cloud-snow",
-        # Light showers of ice pellets at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Light showers of ice pellets at the station during the preceding hour or at the time of observation,
+        # but not at the time of observation
         87: "fa-cloud-snow",
         # Light showers of ice pellets at the station, which did not start or stop during the preceding hour
         88: "fa-cloud-snow",
         # Light showers of ice pellets at the station, which started or stopped during the preceding hour
         89: "fa-cloud-snow",
-        # Moderate or heavy showers of ice pellets at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Moderate or heavy showers of ice pellets at the station during the preceding hour or at the time of
+        # observation, but not at the time of observation
         90: "fa-cloud-snow",
         # Moderate or heavy showers of ice pellets at the station, which did not start or stop during the preceding hour
         91: "fa-cloud-snow",
         # Moderate or heavy showers of ice pellets at the station, which started or stopped during the preceding hour
         92: "fa-cloud-snow",
-        # Slight or moderate snow pellets at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Slight or moderate snow pellets at the station during the preceding hour or at the time of observation,
+        # but not at the time of observation
         93: "fa-cloud-snow",
         # Slight or moderate snow pellets at the station, which did not start or stop during the preceding hour
         94: "fa-cloud-snow",
         # Slight or moderate snow pellets at the station, which started or stopped during the preceding hour
         95: "fa-cloud-snow",
-        # Slight or moderate hail at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Slight or moderate hail at the station during the preceding hour or at the time of observation, but not at
+        # the time of observation
         96: "fa-cloud-snow",
         # Slight or moderate hail at the station, which did not start or stop during the preceding hour
         97: "fa-cloud-snow",
         # Slight or moderate hail at the station, which started or stopped during the preceding hour
         98: "fa-cloud-showers-heavy",
-        # Light showers of snow at the station during the preceding hour or at the time of observation, but not at the time of observation
+        # Light showers of snow at the station during the preceding hour or at the time of observation, but not at
+        # the time of observation
         99: "fa-cloud-showers-heavy",
         # Light showers of snow at the station, which did not start or stop during the preceding hour
     }.get(wmo_code)
 
 
 def get_weather():
-    # r = requests.get(url="https://api.open-meteo.com/v1/forecast?latitude=42.34&longitude=-71.09&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FNew_York")
+    # r = requests.get(url="https://api.open-meteo.com/v1/forecast?latitude=40.75&longitude=-73.94&daily=weathercode,"
+    #                      "temperature_2m_max,temperature_2m_min,sunrise,sunset,"
+    #                      "precipitation_sum&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph"
+    #                      "&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FNew_York")
     # if r.status_code != 200:
     #     raise ConnectionError(f"Got {r.status_code} response (instead of 200) while fetching weather")
     # resp_json = r.json()
+    # Example response:
     resp_json = {
         "latitude": 42.339344,
         "longitude": -71.07211,
@@ -303,9 +368,6 @@ def get_weather():
     print(datetime.fromtimestamp(1690018031).strftime("%H:%M"))
     print(datetime.fromtimestamp(1690071265).strftime("%H:%M"))
 
-    # for i in range(7):
-    # fa-ruler-vertical
-
 
 get_weather()
 
@@ -313,6 +375,7 @@ get_weather()
 def generate() -> div:
     formed_div = div(cls="row mb-3 text-center forecast")
     with formed_div:
+        link()
         with div(cls="col"):
             br()
             i(cls="fa-solid fa-cloud-moon fa-4x")

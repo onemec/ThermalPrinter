@@ -12,6 +12,9 @@
 
 ## Install
 
+- [Playwright](https://playwright.dev/docs/intro#installing-playwright) must be installed (which requires `npm`)
+  - Install required browsers with `playwright install`
+- The Python dependencies can be installed with:
 ```sh
 python -m pip install .
 ```

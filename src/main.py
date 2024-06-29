@@ -1,28 +1,27 @@
-from typing import List, Optional
 from enum import Enum
+from typing import List
+
 import typer
-from typing_extensions import Annotated
-import sudoku_module
+
 import parser as p
+import sudoku_module
+import weather_module
 
 
 class PrinterModules(str, Enum):
     sudoku = "sudoku"
+    weather = "weather"
     # xkcd = "xkcd"
 
     def generate(self):
-        match self:
-            case "sudoku":
-                return sudoku_module.generator.generate()
+        if self == "sudoku":
+            return sudoku_module.generator.generate()
+        elif self == "weather":
+            return weather_module.generator.generate()
 
 
 def main(
-    modules: Annotated[
-        Optional[List[PrinterModules]],
-        typer.Option(
-            "--modules", "-m", help="The modules to be printed in the newspaper"
-        ),
-    ] = None
+    modules: List[PrinterModules]
 ):
     if not modules:
         print("No modules provided")
@@ -35,6 +34,7 @@ def main(
     p.create_html_file(contents=divs_to_add)
     with p.sync_playwright() as playwright:
         p.run(playwright)
+    # p.print_img(img_source="temp.png", id_vendor=None, id_product=None)
 
 
 if __name__ == "__main__":
