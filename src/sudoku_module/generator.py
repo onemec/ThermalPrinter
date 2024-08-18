@@ -3,31 +3,47 @@ from sudoku import Sudoku
 
 
 def generate() -> div:
-    generated_sudoku = Sudoku(3).difficulty(0.4).board
-    print(generated_sudoku)
-    for cell in generated_sudoku:
-        print(cell)
-    sudoku_board = div(cls="container")
-    with sudoku_board:
-        for out_row in range(3):
-            with div(cls="row g-0"):
-                for out_col in range(3):
-                    with div(cls="col border border-black"):
-                        with div(cls="container p-0"):
-                            for in_row in range(3):
-                                with div(cls="row g-0"):
-                                    for in_col in range(3):
-                                        with div(cls="col border p-2 text-center"):
-                                            curr_cell = generated_sudoku[
-                                                out_row * 3 + in_row
-                                            ][out_col * 3 + in_col]
-                                            if curr_cell:
-                                                h5(
-                                                    curr_cell, cls="m-0",
-                                                )
-                                            else:
-                                                h5(
-                                                    0,
-                                                    style="color:white;", cls="m-0",
-                                                )  # Placeholder for Sudoku numbers is a white 0 to preserve cell height
-    return sudoku_board
+    """
+    Generates a Sudoku board with a specified difficulty and returns it as a DOM structure.
+
+    The function creates a 9x9 Sudoku board divided into 3x3 subgrids. Each cell in the board
+    is styled to have equal width and height, and empty cells are displayed with white text.
+
+    Returns:
+        div: A DOM structure representing the Sudoku board.
+    """
+    generated_sudoku = (
+        Sudoku(3).difficulty(0.4).board
+    )  # Generate a 9x9 Sudoku board with 40% difficulty
+    sudoku_board = div(
+        cls="container"
+    )  # Create the main container for the Sudoku board
+
+    for out_row in range(3):
+        with sudoku_board.add(div(cls="row g-0")):  # Create a row for each 3x3 subgrid
+            for out_col in range(3):
+                with div(
+                    cls="col border border-black"
+                ):  # Create a column for each 3x3 subgrid
+                    with div(
+                        cls="container p-0"
+                    ):  # Create a container for the cells within the subgrid
+                        for in_row in range(3):
+                            with div(
+                                cls="row g-0"
+                            ):  # Create a row for each cell within the subgrid
+                                for in_col in range(3):
+                                    curr_cell = generated_sudoku[out_row * 3 + in_row][
+                                        out_col * 3 + in_col
+                                    ]  # Get the current cell value
+                                    cell_value = (
+                                        curr_cell if curr_cell else 0
+                                    )  # Use 0 for empty cells
+                                    cell_style = (
+                                        {} if curr_cell else {"style": "color:white;"}
+                                    )  # Style empty cells with white text
+                                    div(cls="col border p-2 text-center").add(
+                                        h5(cell_value, cls="m-0", **cell_style)
+                                    )  # Create the cell with the appropriate value and style
+
+    return sudoku_board  # Return the generated Sudoku board

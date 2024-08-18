@@ -4,7 +4,7 @@ from escpos.printer import Usb
 
 from playwright.sync_api import sync_playwright
 import dominate
-from dominate.tags import *
+from dominate.tags import div, link
 from pathlib import Path
 
 # Inspired largely by: https://codepen.io/silkine/pen/QWBxVX
@@ -13,26 +13,40 @@ DEFAULT_PNG_FILE = Path("temp.png")
 
 
 def run(_playwright: sync_playwright) -> None:
+    """
+    Launches a Chromium browser instance, navigates to a local HTML file,
+    takes a screenshot of the content, and saves it as a PNG file.
+
+    Args:
+        _playwright (sync_playwright): The Playwright instance used to control the browser.
+    """
     browser = _playwright.chromium.launch()
     page = browser.new_page()
     page.goto(DEFAULT_HTML_FILE.absolute().as_uri(), wait_until="networkidle")
-    # Screenshot the "content" section of the HTML
     page.locator(".content").screenshot(path=DEFAULT_PNG_FILE)
     browser.close()
 
 
-def create_html_file(
-    contents: list[div] | None = None,
-) -> None:
+def create_html_file(contents: list[div] | None = None) -> None:
+    """
+    Creates an HTML file with the specified contents and saves it to a default location.
+
+    Args:
+        contents (list[div] | None): A list of div elements to be included in the HTML file.
+                                      If None, an empty content section will be created.
+
+    Returns:
+        None
+    """
     doc = dominate.document()
     with doc.head:
-        # Paper CSS (for fixed-width printer roll width)
         link(rel="stylesheet", href="src/style.css")
-        # A prettier font
-        link(rel='preconnect', href="https://fonts.googleapis.com")
-        link(rel='preconnect', href="https://fonts.gstatic.com", crossorigin="anonymous")
-        link(rel='stylesheet', href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,"
-                                    "500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap")
+        link(rel="preconnect", href="https://fonts.googleapis.com")
+        link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin="anonymous")
+        link(
+            rel="stylesheet",
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap",
+        )
     with doc.body:
         doc.body["class"] = "preview"
         with div(cls="paper"):

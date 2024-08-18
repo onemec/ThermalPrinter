@@ -1,30 +1,83 @@
+from typing import Annotated
+
 import requests
 from datetime import datetime
-from pydantic import BaseModel, ValidationError, conint
-from dominate.tags import *
+from pydantic import BaseModel, ValidationError, Field
+from dominate.tags import br, i, p, div, link
 from dominate.util import text
 
 
 class DailyWeather(BaseModel):
+    """
+    Model representing daily weather data.
+
+    Attributes
+    ----------
+    time : list[datetime]
+        List of datetime objects representing the time of each weather data point.
+    weathercode : list[Annotated[int, Field(ge=0, le=99)]]
+        List of weather codes, constrained to be between 0 and 99.
+    temperature_2m_max : list[float]
+        List of maximum temperatures at 2 meters above ground level.
+    temperature_2m_min : list[float]
+        List of minimum temperatures at 2 meters above ground level.
+    sunrise : list[float]
+        List of sunrise times.
+    sunset : list[float]
+        List of sunset times.
+    precipitation_sum : list[float]
+        List of total precipitation amounts.
+    """
+
     time: list[datetime]
-    weathercode: list[conint(ge=0, le=99)]
+    weathercode: list[Annotated[int, Field(ge=0, le=99)]]
     temperature_2m_max: list[float]
     temperature_2m_min: list[float]
-    sunrise: list[datetime]
-    sunset: list[datetime]
+    sunrise: list[float]
+    sunset: list[float]
     precipitation_sum: list[float]
 
 
 class CurrentWeather(BaseModel):
+    """
+    Model representing current weather data.
+
+    Attributes
+    ----------
+    temperature : float
+        Current temperature.
+    windspeed : float
+        Current wind speed.
+    winddirection : float
+        Current wind direction.
+    weathercode : Annotated[int, Field(ge=0, le=99)]
+        Current weather code, constrained to be between 0 and 99.
+    is_day : int
+        Indicator if it is day (1) or night (0).
+    time : datetime
+        Current time.
+    """
+
     temperature: float
     windspeed: float
     winddirection: float
-    weathercode: conint(ge=0, le=99)
+    weathercode: Annotated[int, Field(ge=0, le=99)]
     is_day: int
     time: datetime
 
 
 class WeatherResponse(BaseModel):
+    """
+    Model representing the weather response containing current and daily weather data.
+
+    Attributes
+    ----------
+    current_weather : CurrentWeather
+        Instance of CurrentWeather containing current weather data.
+    daily : DailyWeather
+        Instance of DailyWeather containing daily weather data.
+    """
+
     current_weather: CurrentWeather
     daily: DailyWeather
 
@@ -288,112 +341,84 @@ def wmo_to_fa(wmo_code: int) -> str:
 
 
 def get_weather():
-    # r = requests.get(url="https://api.open-meteo.com/v1/forecast?latitude=40.75&longitude=-73.94&daily=weathercode,"
-    #                      "temperature_2m_max,temperature_2m_min,sunrise,sunset,"
-    #                      "precipitation_sum&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph"
-    #                      "&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FNew_York")
-    # if r.status_code != 200:
-    #     raise ConnectionError(f"Got {r.status_code} response (instead of 200) while fetching weather")
-    # resp_json = r.json()
-    # Example response:
-    resp_json = {
-        "latitude": 42.339344,
-        "longitude": -71.07211,
-        "generationtime_ms": 0.46193599700927734,
-        "utc_offset_seconds": -14400,
-        "timezone": "America/New_York",
-        "timezone_abbreviation": "EDT",
-        "elevation": 9,
-        "current_weather": {
-            "temperature": 70.7,
-            "windspeed": 3.7,
-            "winddirection": 237,
-            "weathercode": 3,
-            "is_day": 0,
-            "time": 1690077600,
-        },
-        "daily_units": {
-            "time": "unixtime",
-            "weathercode": "wmo code",
-            "temperature_2m_max": "°F",
-            "temperature_2m_min": "°F",
-            "sunrise": "unixtime",
-            "sunset": "unixtime",
-            "precipitation_sum": "inch",
-        },
-        "daily": {
-            "time": [
-                1689998400,
-                1690084800,
-                1690171200,
-                1690257600,
-                1690344000,
-                1690430400,
-                1690516800,
-            ],
-            "weathercode": [3, 3, 3, 80, 80, 3, 55],
-            "temperature_2m_max": [81.6, 82.9, 87, 92.7, 95, 97.4, 99.8],
-            "temperature_2m_min": [65.9, 63.9, 64.9, 66.8, 67.3, 71.3, 72.1],
-            "sunrise": [
-                1690018031,
-                1690104487,
-                1690190945,
-                1690277403,
-                1690363861,
-                1690450321,
-                1690536781,
-            ],
-            "sunset": [
-                1690071265,
-                1690157612,
-                1690243957,
-                1690330300,
-                1690416642,
-                1690502982,
-                1690589321,
-            ],
-            "precipitation_sum": [0, 0, 0, 0.071, 0.135, 0, 0.189],
-        },
-    }
+    """
+    Fetch the current weather and daily forecast data from the Open-Meteo API.
 
+    This function sends a GET request to the Open-Meteo API to retrieve weather data
+    for a specific location (latitude: 40.75, longitude: -73.94). The data includes
+    current weather conditions and daily forecasts such as weather code, maximum and
+    minimum temperatures, sunrise and sunset times, and precipitation.
+
+    Returns
+    -------
+    WeatherResponse
+        An instance of the WeatherResponse class containing the parsed weather data.
+
+    Raises
+    ------
+    ConnectionError
+        If the API response status code is not 200 (OK).
+    ValidationError
+        If the JSON response cannot be validated against the WeatherResponse model.
+    """
+    url = (
+        "https://api.open-meteo.com/v1/forecast?latitude=40.75&longitude=-73.94"
+        "&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum"
+        "&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph"
+        "&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FNew_York"
+    )
+    r = requests.get(url)
+    if r.status_code != 200:
+        raise ConnectionError(
+            f"Got {r.status_code} response (instead of 200) while fetching weather"
+        )
     try:
-        wr = WeatherResponse(**resp_json)
+        return WeatherResponse(**r.json())
     except ValidationError as e:
         raise ValidationError(e.errors())
-    print(wr.current_weather.time.strftime("%b %d"))
-    print(wmo_to_fa(wr.current_weather.weathercode))
-    print(f"fa-wind: {wr.current_weather.windspeed}")
-    print(f"fa-temperature-three-quarters: {wr.current_weather.temperature}")
-
-    print(datetime.fromtimestamp(1690018031).strftime("%H:%M"))
-    print(datetime.fromtimestamp(1690071265).strftime("%H:%M"))
-
-
-get_weather()
 
 
 def generate() -> div:
+    """
+    Generate an HTML div element containing the weather forecast.
+
+    This function fetches the current weather and daily forecast data,
+    then constructs an HTML div element with the weather information
+    formatted for display.
+
+    Returns
+    -------
+    div
+        An HTML div element with the weather forecast.
+    """
+    wr = get_weather()
     formed_div = div(cls="row mb-3 text-center forecast")
     with formed_div:
         link()
         with div(cls="col"):
             br()
-            i(cls="fa-solid fa-cloud-moon fa-4x")
+            i(cls=f"fa-solid {wmo_to_fa(wr.current_weather.weathercode)} fa-4x")
         with div(cls="col"):
             with div(cls="row"):
-                text("<h5>70.7&degF</h5>", escape=False)
+                text(
+                    f"<h5>{wr.current_weather.temperature:.1f}&degF</h5>", escape=False
+                )
             with div(cls="row"):
                 with p():
                     i(cls="fa-solid fa-wind fa-sm")
-                    text(" 3.7 mph ")
+                    text(f" {wr.current_weather.windspeed:.1f} mph ")
                     br()
                     i(cls="fa-solid fa-arrow-up-long")
-                    text(" 81.6&degF ", escape=False)
+                    text(f" {wr.daily.temperature_2m_max[0]}&degF ", escape=False)
                     i(cls="fa-solid fa-arrow-down-long")
-                    text(" 65.9&degF ", escape=False)
+                    text(f" {wr.daily.temperature_2m_min[0]}&degF ", escape=False)
                     br()
                     i(cls="fa-regular fa-sun")
-                    text(" 05:27 ")
+                    text(
+                        f" {datetime.fromtimestamp(wr.daily.sunrise[0]).strftime('%H:%M')} "
+                    )
                     i(cls="fa-solid fa-arrow-right-long")
-                    text(" 20:14 ")
-        return formed_div
+                    text(
+                        f" {datetime.fromtimestamp(wr.daily.sunset[0]).strftime('%H:%M')} "
+                    )
+    return formed_div
