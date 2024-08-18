@@ -58,7 +58,7 @@ h1 {
 
 body .content {
     -webkit-font-smoothing: none;
-    width: 384px;
+    width: 576px;
     overflow: hidden;
     margin: 0 auto;
     background-color: white;
