@@ -579,7 +579,7 @@ wheels = [
 ]
 
 [[package]]
-name = "thermanprinter"
+name = "thermalprinter"
 version = "0.0.1"
 source = { virtual = "." }
 dependencies = [

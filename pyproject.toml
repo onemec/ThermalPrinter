@@ -1,5 +1,5 @@
 [project]
-name = "ThermanPrinter"
+name = "ThermalPrinter"
 version = "0.0.1"
 description = "Enables printing simple web content (news, puzzles, etc.) to any ESC/POS thermal printer."
 authors = [
