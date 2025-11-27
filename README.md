@@ -12,7 +12,7 @@
 
 ## Pre-requisites
 - Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- Install [playwright](https://playwright.dev/docs/intro#installing-playwright) with `uv run playwright install`
+- Install Chromium within [playwright](https://playwright.dev/docs/intro#installing-playwright) with `uv run playwright install chromium`
 
 ## Usage
 
