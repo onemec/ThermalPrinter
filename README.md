@@ -14,37 +14,13 @@
 
 - [Playwright](https://playwright.dev/docs/intro#installing-playwright) must be installed (which requires `npm`)
   - Install required browsers with `playwright install`
-- The Python dependencies can be installed with:
-```sh
-python -m pip install .
-```
 
 ## Usage
 
 ```sh
-python src/main.py --help
+uv run src/main.py --help
 ```
-
-## Author
-
-👤 **Oliver Nemec**
-
-* Website: [onemec.org](https://onemec.org)
-* Github: [@onemec](https://github.com/onemec)
-* LinkedIn: [@onemec](https://linkedin.com/in/onemec)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/onemec/ThermalPrinter/issues). 
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-## 📝 License
-
-Copyright © 2023 [Oliver Nemec](https://github.com/onemec).<br />
-This project is [GPL--3.0--only](https://spdx.org/licenses/GPL-3.0-only.html) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/onemec/ThermalPrinter/issues).
