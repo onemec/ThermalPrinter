@@ -42,7 +42,10 @@ def generate() -> div:
                                     cell_style = (
                                         {} if curr_cell else {"style": "color:white;"}
                                     )  # Style empty cells with white text
-                                    div(cls="col border p-2 text-center").add(
+                                    div(
+                                        cls="col border text-center",
+                                        style="aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; min-height: 40px;"
+                                    ).add(
                                         h5(cell_value, cls="m-0", **cell_style)
                                     )  # Create the cell with the appropriate value and style
 
